@@ -1,0 +1,30 @@
+body {
+    background: url(../imgs/fondoLogin.jpg) no-repeat center top ;
+    background-size: cover;
+}
+
+.recuadroBN{
+    text-align: center;
+    margin-top:25%;
+    font-size: 2vw;
+    color:#FFFFFF;
+    padding: 5%;
+    padding-bottom: 1%;
+    border-radius: 1vw;
+    background-color: rgba(0,0,0,0.6);
+}
+.letraLoginD{
+    font-size: 1vw;
+}
+#formulario{
+    text-align: left;
+    font-size: 1.5vw;
+}
+th{
+    color:#FFFFFF;
+    font-size: 2vw;
+    padding-bottom:1%;
+}
+table{
+    margin-left: 15%;
+}

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        {% load static %}
+        {%include "components/bootstrap.html" %}
+        <link rel="stylesheet"  href="{% static 'css/home.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <div class="recuadroBN">
+                        <p id="tituloBN">Busqueda</p>
+                        <form action ="/resultados" method="POST" id="formulario">{% csrf_token %}
+                            <select name="opcion" class="form-select" aria-label="Disabled select example" id="selector">
+                                <option selected disabled >Seleccione genero</option>
+                                <option value="01">Epico</option>
+                                <option value="02">Terror</option>
+                                <option value="03">Novela</option>
+                                <option value="04">Revista</option>
+                                <option value="05">Ficcion</option>
+                            </select>
+                            <input type="hidden" name="valor" value="xD">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-4">
+                </div>
+                <div id="resultado" class="col-10 row">
+                </div>
+            </div>
+      </div>
+    </body>
+    <footer>
+    </footer>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#selector').change( function() {
+            $.ajax({ 
+                data: $('#formulario').serialize(),
+                type: $('#formulario').attr('method'),
+                url: $('#formulario').attr('action'),
+                success: function(response) {
+                    $('#resultado').html(response);
+                }
+            });
+         });
+     });
+</script>
+</html>

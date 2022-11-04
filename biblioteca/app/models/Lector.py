@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ModelForm
+from django.forms import PasswordInput
 
 class Lector(models.Model):
     numSocio = models.CharField(primary_key=True,max_length=15)
@@ -7,6 +8,7 @@ class Lector(models.Model):
     rut = models.CharField(max_length = 10)
     apellido = models.CharField(max_length=25)
     direccion = models.CharField(max_length=50)
+    password = models.CharField(max_length=255)
     
     def comprobarMultasPendientes(self):
         pass
@@ -14,5 +16,8 @@ class Lector(models.Model):
 class LectorForm(ModelForm):
     class Meta:
         model = Lector
-        fields = '__all__'
+        fields = ['rut','nombre','apellido','direccion','password']
+        widgets = {
+        'password': PasswordInput(),
+        }
         exclude = ['numSocio']

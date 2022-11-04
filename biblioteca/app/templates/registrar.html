@@ -1,0 +1,31 @@
+<html>
+    <head>
+        {% load static %}
+        {%include "components/bootstrap.html" %}
+        <link rel="stylesheet"  href="{% static 'css/home.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                    <div class="recuadroBN">
+                        <p id="tituloBN">Registrar</p>
+                        <form class="formInBN" action="/registrar" method="POST">
+                        {% csrf_token %}
+                            <table>
+                                {{formulario}}
+                            </table>
+                            <tr><td><input class="btn btn-dark" type="submit" text="Registrar"></td></tr>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+      </div>
+    </body>
+    <footer>
+    </footer>
+</html>
