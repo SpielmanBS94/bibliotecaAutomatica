@@ -1,8 +1,8 @@
 version: "1"
 #docker network create -d bridge --subnet 192.168.0.0/24 -- gateway 192.168.0.1 ingSoft
-#docker network create -d bridge --subnet 169.254.0.0/24 -- gateway 169.254.0.1 ingSoft
+#docker network create -d bridge --subnet 169.254.0.0/24 -- gateway 169.254.0.1 ingSoft3
 networks:
-  ingSoft3:
+  ingSoft:
     external: true
 
 services:
@@ -16,7 +16,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - ingSoft3
+      - ingSoft
 
   backend:
     build: .
@@ -33,7 +33,7 @@ services:
       - "8000:8000"
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     networks:
-      - ingSoft3
+      - ingSoft
 
 volumes:
   mysql_data:
