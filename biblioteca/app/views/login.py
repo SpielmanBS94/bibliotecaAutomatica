@@ -9,7 +9,7 @@ def logIn(request):
         usuario = Lector.objects.get(numSocio=request.POST["user"],password=request.POST["pass"])
     except ObjectDoesNotExist:
         return render(request, "home.html", {"error":True,"mensaje":"Revise los datos"},status=404)
-    return render(request, "login.html", {},status=200)
+    return render(request, "login.html", {'usuario':usuario,'clase':Lector},status=200)
 
 def resultados(request):
     libros = Libro.objects.filter(tipo=request.POST["opcion"])

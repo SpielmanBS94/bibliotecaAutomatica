@@ -1,0 +1,39 @@
+version: "1"
+#docker network create -d bridge --subnet 192.168.0.0/24 -- gateway 192.168.0.1 ingSoft
+#docker network create -d bridge --subnet 169.254.0.0/24 -- gateway 169.254.0.1 ingSoft
+networks:
+  ingSoft3:
+    external: true
+
+services:
+  mysql-db:
+    image: mysql:latest
+    container_name: MySQLdb
+    volumes:
+      - mysql_data:/var/lib/mysqlBiblioAut
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3306:3306"
+    networks:
+      - ingSoft3
+
+  backend:
+    build: .
+    container_name: DjangoCont
+    env_file: .env
+    restart: always
+    volumes:
+      - .:/appDocker
+    depends_on:
+      - mysql-db
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    networks:
+      - ingSoft3
+
+volumes:
+  mysql_data:

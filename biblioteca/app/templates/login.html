@@ -5,6 +5,7 @@
         <link rel="stylesheet"  href="{% static 'css/home.css' %}">
     </head>
     <body>
+        {{usuario.nombreApellido}}
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -13,6 +14,7 @@
                     <div class="recuadroBN">
                         <p id="tituloBN">Busqueda</p>
                         <form action ="/resultados" method="POST" id="formulario">{% csrf_token %}
+                            <input type="hidden" value={{usuario}}>
                             <select name="opcion" class="form-select" aria-label="Disabled select example" id="selector">
                                 <option selected disabled >Seleccione genero</option>
                                 <option value="01">Epico</option>
