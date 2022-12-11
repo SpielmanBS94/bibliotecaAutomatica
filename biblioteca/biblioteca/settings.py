@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'biblioteca'),
-        'USER': os.environ.get('MYSQL_USER', 'brian'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'asd_54342_BREAW'),
-        'HOST': os.environ.get('MYSQL_DATABASE_HOST', '192.168.0.1'),
-        'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_DATABASE_HOST'),
+        'PORT': os.environ.get('MYSQL_DATABASE_PORT'),
     }
 }
 
